@@ -1,4 +1,4 @@
-import { Doctor } from "../models/Doctor.js";
+import  Doctor  from "../models/Doctor.js";
 
 const getAllDoctor = async () => {
     return await Doctor.find();

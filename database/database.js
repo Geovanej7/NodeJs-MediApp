@@ -11,3 +11,5 @@ db.once(
         console.log('Database connected successfuly!');
     }
 );
+
+export default db ;

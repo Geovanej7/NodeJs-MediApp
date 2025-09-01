@@ -1,4 +1,4 @@
-import { AppointmentRepository } from "../repositories/AppointmentRepository";
+import  AppointmentRepository  from "../repositories/AppointmentRepository.js";
 
 const getAllApointment = async () => {
     return AppointmentRepository.getAllApointment();
