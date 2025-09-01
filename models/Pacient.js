@@ -8,7 +8,8 @@ const pacientSchema = new Schema ({
         required : [true, 'Pacient name is required.']
     },
     birthDate: {
-        type: Date
+        type: Date,
+        required : [true, 'Birth date is required.']
     },
     email: {
         type: String,
