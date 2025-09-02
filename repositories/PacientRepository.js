@@ -15,7 +15,7 @@ const getPacient = async (id) => {
 const savePacient = async ({name, birthDate, email, phone }) => {
     try {
         const pacient = new Pacient({name, birthDate, email, phone });
-        return await Pacient.save();
+        return await pacient.save();
     } catch (error) {
         throw new Error (error);
     }
@@ -31,7 +31,7 @@ const updatePacient = async (id,{name, birthDate, email, phone }) => {
 
 const deletePacient = async (id) => {
     try {
-        return await Pacient.findByIdAndUpdate(id);
+        return await Pacient.findByIdAndDelete(id);
     } catch (error) {
         throw new Error (error);
     }

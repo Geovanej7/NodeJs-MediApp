@@ -15,7 +15,7 @@ const getPrescription = async (id) => {
 const savePrescription = async ({date, appointmentId, medicine, dosage,instructions}) => {
     try {
         const prescription = new Prescription({date, appointmentId, medicine, dosage,instructions});
-        return await Prescription.save();
+        return await prescription.save();
     } catch (error) {
         throw new Error (error);
     }
@@ -31,7 +31,7 @@ const updatePrescription = async (id,{date, appointmentId, medicine, dosage,inst
 
 const deletePrescription = async (id) => {
     try {
-        return await Prescription.findByIdAndUpdate(id);
+        return await Prescription.findByIdAndDelete(id);
     } catch (error) {
         throw new Error (error);
     }

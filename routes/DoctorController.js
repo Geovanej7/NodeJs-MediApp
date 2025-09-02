@@ -29,7 +29,7 @@ router.post('/postDoctor/', async(req,res) =>{
     const{nome, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const doctor = await DoctorService.saveDoctor({nome, login, hashedPassword, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = await DoctorService.saveDoctor({nome, login, password: hashedPassword, medicalSpecialty, medicalRegistration, email, phone});
         res.status(201).send(doctor);
     } catch (error) {
         console.log(error);
@@ -41,7 +41,7 @@ router.put('/Doctor/:id', async(req,res) =>{
     const{id}=req.params;
     const{nome, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
-        const doctor = await AppointmentService.updateAppointments(id,{nome, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = await DoctorService.updateDoctor(id,{nome, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -52,7 +52,7 @@ router.put('/Doctor/:id', async(req,res) =>{
 router.delete('/Doctor/:id', async(req,res) =>{
     const{id}=req.params;
     try {
-        const doctor = await DoctorService.deleteAppointment(id);
+        const doctor = await DoctorService.deleteDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);
