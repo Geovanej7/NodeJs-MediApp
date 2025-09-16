@@ -31,7 +31,7 @@ router.post('/login', async (req,res) => {
             return res.status(401).json({error: 'Autentication failed!'});
         }
 
-        const token = JsonWebTokenError.sign({doctorId: doctor._id}, 'you-secret-key',{
+        const token = jwt.sign({doctorId: doctor._id}, 'you-secret-key',{
             expiresIn: '1hr',
         });
         res.status(200).json({token});
