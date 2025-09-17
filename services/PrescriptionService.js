@@ -5,6 +5,7 @@ import DoctorService from "../services/DoctorService.js"
 import PDFDocument from "pdfkit";
 import fs from "fs";
 
+
 const getAllPrescription = async () => {
     return PrescriptionRepository.getAllPrescription();
 }
@@ -17,8 +18,8 @@ const savePrescription = async ({date, appointmentId, medicine, dosage,instructi
     return PrescriptionRepository.savePrescription({date, appointmentId, medicine, dosage,instructions});
 }
 
-const updatePrescription = async (id,{date, appointmentId, medicine, dosage,instructions}) =>{
-    return PrescriptionRepository.updatePrescription(id,{date, appointmentId, medicine, dosage,instructions});
+const updatePrescription = async (id,{date, appointmentId, medicine, dosage, instructions, file}) =>{
+    return PrescriptionRepository.updatePrescription(id,{date, appointmentId, medicine, dosage, instructions, file});
 }
 
 const deletePrescription = async (id) =>{
