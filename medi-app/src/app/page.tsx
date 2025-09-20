@@ -20,7 +20,7 @@ export default function Home() {
         password: password
       }
 
-      const add = await fetch('http:localhost:3001/login', {
+      const add = await fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -78,7 +78,7 @@ export default function Home() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition cursor-pointer"
           >
             Entrar
           </button>

@@ -6,6 +6,7 @@ export default function Home(){
         <>
         <h1>Home</h1>
         <Link href="/doctor/create">Create new doctor</Link><br />
+        <Link href="/doctor/list">List all doctors</Link><br />
         <Link href="/pacient/create">Create new pacient</Link><br />
         <Link href="/appointment/create">Create new appointment</Link><br />
         <Link href="/prescription/create">Create new prescription</Link>
