@@ -1,5 +1,6 @@
 "use client"
 import React, {useEffect, useState} from "react"
+import toast from "react-hot-toast";
 import Link from "next/link"
 
 export default function DoctorList(){
@@ -18,22 +19,28 @@ export default function DoctorList(){
     .then(data => setDoctors(data))
 }, [doctors]); 
 
-const deleteDoctor = async (id:any) => {
-    const add = await fetch (`http://localhost:3001/Doctor/${id}`,{
-        method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": sessionStorage.getItem("token") || " "
-    },  
+const deleteDoctor = async (id: any) => {
+  try {
+    const res = await fetch(`http://localhost:3001/Doctor/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": sessionStorage.getItem("token") || " ",
+      },
     });
-    const content = await add.json();
-    console.log(content);
-    if (content.login) {
-        window.location.reload();
+
+    const content = await res.json();
+
+    if (res.ok) {
+      toast.success("Doutor excluído com sucesso");
     } else {
-        setError(content.error)
+      setError(content.error);
+      toast.error("Erro ao excluir doutor");
     }
-}
+  } catch (err) {
+    toast.error("Erro inesperado ao excluir");
+  }
+};
  return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-6xl bg-white p-6 rounded-xl shadow-md">
@@ -67,13 +74,13 @@ const deleteDoctor = async (id:any) => {
                 <td className="border border-slate-300 p-2 text-center text-gray-800">{doctor.phone}</td>
                 <td className="border border-slate-300 p-2 text-center space-x-2">
                   <button
-                    onClick={() => deleteDoctor(doctor.id)}
+                    onClick={() => deleteDoctor(doctor._id)}
                     className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition cursor-pointer"
                   >
                     Deletar
                   </button>
                   <Link
-                    href={`/doctor/edit/${doctor.id}`}
+                    href={`/doctor/edit/${doctor._id}`}
                     className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition cursor-pointer"
                   >
                     Editar

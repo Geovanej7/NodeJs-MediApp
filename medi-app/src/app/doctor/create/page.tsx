@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import { motion, easeInOut } from "framer-motion";
 
 // 🔥 animação em onda para o texto "Carregando..."
@@ -41,7 +42,7 @@ export default function DoctorCreate() {
   const addDoctor = async (e: any) => {
     e.preventDefault();
     setError(null);
-    setLoading(true); // 👈 ativa "Carregando..."
+    setLoading(true); // ativa "Carregando..."
 
     try {
       if (
@@ -75,16 +76,20 @@ export default function DoctorCreate() {
         });
 
         const content = await add.json();
-
+        
         if (content.login) {
+          toast.success("Doutor criado com sucesso");
           router.push("/home");
         } else {
+          toast.error("Erro ao cadastrar médico");
           setError(content.error || "Erro ao cadastrar médico");
         }
       } else {
+        toast.error("Preencha todos os campos.");
         setError("Preencha todos os campos.");
       }
     } catch (err) {
+      toast.error("Erro na comunicação com o servidor.");
       setError("Erro na comunicação com o servidor.");
     } finally {
       setLoading(false); // 👈 desliga "Carregando..."
