@@ -3,19 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { motion, easeInOut } from "framer-motion";
-
-// 🔥 animação em onda para o texto "Carregando..."
-const waveVariants = {
-  animate: {
-    y: [0, -4, 0],
-    transition: {
-      duration: 0.6,
-      repeat: Infinity,
-      ease: easeInOut,
-    },
-  },
-};
+import LoadingButton from "@/app/components/LoadingButton";
 
 export default function DoctorCreate() {
   const router = useRouter();
@@ -82,27 +70,26 @@ export default function DoctorCreate() {
           router.push("/home");
         } else {
           toast.error("Erro ao cadastrar médico");
-          setError(content.error || "Erro ao cadastrar médico");
         }
       } else {
         toast.error("Preencha todos os campos.");
-        setError("Preencha todos os campos.");
       }
     } catch (err) {
       toast.error("Erro na comunicação com o servidor.");
-      setError("Erro na comunicação com o servidor.");
     } finally {
-      setLoading(false); // 👈 desliga "Carregando..."
+      setLoading(false); // desliga "Carregando..."
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-lg bg-white p-6 rounded-xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-blue-600">
-          Cadastro de Médico
-        </h1>
-        <form onSubmit={addDoctor} className="space-y-4">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-blue-600">Cadastro de Médicos</h1>
+          <Link href="/home" className="text-blue-600 hover:underline">
+            Voltar
+          </Link>
+        </div>        <form onSubmit={addDoctor} className="space-y-4">
           <input
             type="text"
             placeholder="Nome"
@@ -165,43 +152,10 @@ export default function DoctorCreate() {
               {error}
             </div>
           )}
-
-          <motion.button
-            type="submit"
-            disabled={loading}
-            whileTap={{ scale: 0.95 }}
-            className={`w-full py-2 rounded-md transition ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
-          >
-            {loading ? (
-              <div className="flex gap-1 justify-center">
-                {"Carregando...".split("").map((letter, i) => (
-                  <motion.span
-                    key={i}
-                    variants={waveVariants}
-                    animate="animate"
-                    transition={{ delay: i * 0.1 }}
-                    className="inline-block"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </div>
-            ) : (
-              "Cadastrar"
-            )}
-          </motion.button>
+          <LoadingButton type="submit" loading={loading}>
+            Cadastrar
+          </LoadingButton>
         </form>
-
-        <div className="mt-4 text-sm text-gray-600 text-center">
-          Já tem conta?{" "}
-          <Link href="/" className="text-blue-600 hover:underline">
-            Fazer login
-          </Link>
-        </div>
       </div>
     </div>
   );

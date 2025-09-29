@@ -1,19 +1,25 @@
 "use client"
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import LoadingButton from "./components/LoadingButton";
 
 
 export default function Home() {
   const router = useRouter();
-  const [login, setLogin] = useState<string>(''); //hook = gancho
+  const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const authentication = async (e: any) => {
     e.preventDefault();
     setError(null);
+    setLoading(true);
+    
 
-    if (login != "" && password != "") {
+    try {
+      if (login != "" && password != "") {
 
       const formData = {
         login: login,
@@ -31,8 +37,16 @@ export default function Home() {
         sessionStorage.setItem("token", content.token);
         router.push('/home');
       } else {
-        setError(content.error);
+        toast.error("Erro ao fazer login");
       }
+    }else {
+        toast.error("Preencha todos os campos.");
+      }
+    } catch (error) {
+      setError("Erro na comnicação com o servidor");
+    }
+    finally{
+      setLoading(false);
     }
   }
 
@@ -76,12 +90,10 @@ export default function Home() {
             </div>
           )}
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition cursor-pointer"
-          >
+          <LoadingButton type="submit" loading={loading}>
             Entrar
-          </button>
+          </LoadingButton>
+          
         </form>
       </div>
     </div>
