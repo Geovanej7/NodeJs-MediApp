@@ -65,7 +65,7 @@ export default function Home() {
               type="text"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
-              className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-gray-400 text-gray-700"
+              className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Digite seu usuário"
             />
           </div>
@@ -79,7 +79,7 @@ export default function Home() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-gray-400 text-gray-700"
+              className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Digite sua senha"
             />
           </div>

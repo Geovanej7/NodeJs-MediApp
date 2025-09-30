@@ -19,6 +19,8 @@ export default function DoctorList(){
     .then(data => setDoctors(data))
 }, [doctors]); 
 
+
+
 const deleteDoctor = async (id: any) => {
   try {
     const res = await fetch(`http://localhost:3001/Doctor/${id}`, {
@@ -65,7 +67,7 @@ const deleteDoctor = async (id: any) => {
           </thead>
           <tbody className="doctors" id="doctors">
             {!!doctors && doctors.map((doctor: any) => (
-              <tr key={doctor.id}>
+              <tr key={doctor._id}>
                 <td className="border border-slate-300 p-2 text-gray-800">{doctor.nome}</td>
                 <td className="border border-slate-300 p-2 text-center text-gray-800">{doctor.login}</td>
                 <td className="border border-slate-300 p-2 text-center text-gray-800">{doctor.medicalSpecialty}</td>

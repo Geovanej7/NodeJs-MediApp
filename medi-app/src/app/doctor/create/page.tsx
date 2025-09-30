@@ -95,56 +95,56 @@ export default function DoctorCreate() {
             placeholder="Nome"
             value={nome}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="text"
             placeholder="Login"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="password"
             placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="text"
             placeholder="Especialidade Médica"
             value={medicalSpecialty}
             onChange={(e) => setMedicalSpecialty(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="text"
             placeholder="Registro Médico"
             value={medicalRegistration}
             onChange={(e) => setMedicalRegistration(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="email"
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
           <input
             type="text"
             placeholder="Telefone (99 91234-5678)"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full p-2 border rounded-md placeholder-gray-600 text-gray-800
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+
           />
 
           {error && (
